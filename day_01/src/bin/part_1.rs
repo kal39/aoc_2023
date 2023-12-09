@@ -4,12 +4,13 @@ fn main() {
         .split("\n")
         .map(|s| s.to_string())
         .filter(|s| !s.is_empty())
-        .map(|s| s.chars().filter(|c| c.is_numeric()).collect::<Vec<char>>())
-        .map(|s| (s[0], s[s.len() - 1]))
-        .map(|s| (s.0.to_digit(10).unwrap(), s.1.to_digit(10).unwrap()))
-        .map(|s| 10 * s.0 + s.1)
-        .sum::<u32>()
-        .to_string();
+        .map(|s| {
+            let numbers = s.chars().filter(|c| c.is_numeric()).collect::<Vec<char>>();
+            let first = numbers.first().unwrap().to_digit(10).unwrap();
+            let last = numbers.last().unwrap().to_digit(10).unwrap();
+            10 * first + last
+        })
+        .sum::<u32>();
 
     println!("result: {}", out);
 }
