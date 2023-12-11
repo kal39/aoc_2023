@@ -70,7 +70,6 @@ fn main() {
                             state[i as usize][j as usize] = iter + 1;
                             state_changed = true;
 
-                            //  save start dirs
                             if iter == 0 {
                                 start_dirs.push((*di, *dj));
                             }

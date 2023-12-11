@@ -13,8 +13,6 @@ fn main() {
             });
         });
 
-    println!("{:?}", coords);
-
     let rows = coords.iter().map(|c| c.0).max().unwrap();
     let cols = coords.iter().map(|c| c.1).max().unwrap();
 
@@ -37,8 +35,6 @@ fn main() {
             });
         }
     }
-
-    println!("{:?}", coords);
 
     let mut res = 0;
     for i in 0..coords.len() {
