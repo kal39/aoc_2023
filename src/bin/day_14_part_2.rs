@@ -1,30 +1,16 @@
 fn tilt(map: &mut Vec<Vec<char>>, dir: (i32, i32)) -> bool {
-    let i_range = if dir.0 < 0 {
-        (0..map.len()).rev().collect::<Vec<usize>>()
-    } else {
-        (0..map.len()).collect::<Vec<usize>>()
-    };
-
-    let j_range = if dir.1 < 0 {
-        (0..map[0].len()).rev().collect::<Vec<usize>>()
-    } else {
-        (0..map[0].len()).collect::<Vec<usize>>()
-    };
-
     let mut updated = false;
-    for &i in &i_range {
-        for &j in &j_range {
+    for i in 0..map.len() {
+        for j in 0..map[i].len() {
             if map[i][j] == 'O' {
                 let id = i as i32 + dir.0;
                 let jd = j as i32 + dir.1;
-
-                if id < 0 || jd < 0 || id >= map.len() as i32 || jd >= map[0].len() as i32 {
-                    continue;
-                }
-                if map[id as usize][jd as usize] == '.' {
-                    map[id as usize][jd as usize] = 'O';
-                    map[i][j] = '.';
-                    updated = true;
+                if id >= 0 && jd >= 0 && id < map.len() as i32 && jd < map[0].len() as i32 {
+                    if map[id as usize][jd as usize] == '.' {
+                        map[id as usize][jd as usize] = 'O';
+                        map[i][j] = '.';
+                        updated = true;
+                    }
                 }
             }
         }

@@ -8,7 +8,6 @@ fn main() {
     let mut updated = true;
     while updated {
         updated = false;
-
         for i in 0..map.len() {
             for j in 0..map[i].len() {
                 if map[i][j] == 'O' {
