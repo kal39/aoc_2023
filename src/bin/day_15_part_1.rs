@@ -1,11 +1,6 @@
-fn hash(str: &str) -> u64 {
+fn hash(s: &str) -> u64 {
     let mut res = 0;
-    str.chars().for_each(|c| {
-        let c = c as u64;
-        res += c;
-        res *= 17;
-        res %= 256;
-    });
+    s.chars().for_each(|c| res = ((res + c as u64) * 17) % 256);
     res
 }
 
